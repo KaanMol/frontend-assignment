@@ -13,9 +13,8 @@ const httpServer = http.createServer(app)
 
 // Initating all middleware for express
 app
-	.set("views", `${process.cwd()}/src/server/views`)
+	.set("views", `${__dirname}/src/views`)
 	.set("view engine", "pug")
-	.use(express.static(`${process.cwd()}/src/client`))
 
 // Render index.pug from views for root URL
 app
@@ -42,5 +41,3 @@ broadcaster.on("data", (data) => {
 httpServer.listen(3000, () => {
 	console.log("HTTP server listening on port 3000")
 })
-
-
