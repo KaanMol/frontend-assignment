@@ -53,8 +53,5 @@
       "rules": {}
     }
   ],
-  "extends": [
-    null,
-    "plugin:storybook/recommended"
-  ]
+  "extends": []
 }
