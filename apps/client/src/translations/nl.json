@@ -1,0 +1,11 @@
+{
+	"translation": {
+		"dashboard": {
+			"time": "Tijd",
+			"odometer": "Kilometerteller",
+			"energy": "Energie",
+			"speed": "Snelheid",
+			"charge": "Batterij status"
+		}
+	}
+}

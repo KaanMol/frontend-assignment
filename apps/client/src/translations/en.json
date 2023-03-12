@@ -1,0 +1,11 @@
+{
+	"translation": {
+		"dashboard": {
+			"time": "Time",
+			"odometer": "Odometer",
+			"energy": "Energy",
+			"speed": "Speed",
+			"charge": "Battery status"
+		}
+	}
+}
