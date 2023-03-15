@@ -2,7 +2,7 @@ import { EventEmitter } from 'events';
 import csvParse from 'csv-parse';
 import fs from 'fs';
 import { Writable } from 'stream';
-
+import path from 'path';
 
 export class Broadcaster extends EventEmitter {
 	private broadcasting: boolean;
@@ -15,7 +15,7 @@ export class Broadcaster extends EventEmitter {
 	start() {
 		this.broadcasting = true;
 		const broadcast = () => {
-			const fileStream = fs.createReadStream(`${__dirname}/src/meta/route.csv`);
+			const fileStream = fs.createReadStream(path.resolve(`${__dirname}/../../../src/meta/route.csv`));
 
 			fileStream
 				// Filestream piped to csvParse which accept nodejs readablestreams and parses each line to a JSON object

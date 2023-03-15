@@ -1,48 +1,62 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { LineChart, Map, TextStatistics } from '@front-end-assignment/ui';
+import { BusStatistics, LineChart, Map } from '@front-end-assignment/ui';
 import { Page } from '@front-end-assignment/ui';
-import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
-import i18next from '../translations';
-
-type BusData = {
-	time: Date,
-	energy: number,
-	gps: [number, number],
-	odo: number,
-	speed: number,
-	soc: number
-}
+import { toBusStatisticsData } from '../helpers/busStatistics';
+import { languages } from '../locales';
+import { BusData } from '../types/busData';
 
 export function App() {
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
+
 	const [state, setState] = useState([] as BusData[]);
-	const { lastMessage, readyState } = useWebSocket("ws://localhost:3000");
+	const { lastMessage, readyState } = useWebSocket('ws://localhost:3000');
 
 	useEffect(() => {
 		const data = lastMessage?.data;
 		if (data === undefined) return;
 
 		let parsedData = JSON.parse(data);
-		parsedData.gps = parsedData.gps.split("|");
+		parsedData.gps = parsedData.gps.split('|');
 		parsedData.time = new Date(parsedData.time);
 
 		if (state.length >= 500) {
 			state.shift();
 		}
 
-		setState([...state, parsedData])
+		setState([...state, parsedData]);
 	}, [lastMessage]);
 
+	const locales = Object.keys(languages).map((languageCode) => {
+		const currentLanguage =
+			languages[languageCode as keyof typeof languages];
+
+		return {
+			name: currentLanguage.name,
+			action: () => {
+				i18n.changeLanguage(languageCode);
+				setLocale({
+					...locale,
+					currentLocale: currentLanguage.name,
+				});
+			},
+		};
+	});
+
+	const [locale, setLocale] = useState({
+		currentLocale: languages[i18n.language as keyof typeof languages].name,
+		locales,
+	});
+
 	return (
-		<Page>
-			{
-				state.at(-1) === undefined || readyState !== ReadyState.OPEN ?
-					<p>Loading</p> :
-					<Dashboard state={state} />
-			}
+		<Page locale={locale}>
+			{state.at(-1) === undefined || readyState !== ReadyState.OPEN ? (
+				<p>Loading</p>
+			) : (
+				<Dashboard state={state} />
+			)}
 		</Page>
 	);
 }
@@ -50,34 +64,30 @@ export function App() {
 function Dashboard({ state }) {
 	const { t } = useTranslation();
 	const lastMessage = state.at(-1);
-	const textStatisticsData = [
-		{
-			title: t("dashboard.time"),
-			value: lastMessage.time.toLocaleTimeString()
-		},
-		{
-			title: t("dashboard.odometer"),
-			value: `${lastMessage.odo} km`
-		},
-		{
-			title: t("dashboard.energy"),
-			value: `${lastMessage.energy} kW`
-		},
-		{
-			title: t("dashboard.speed"),
-			value: `${lastMessage.speed} km/h`
-		},
-		{
-			title: t("dashboard.charge"),
-			value: `${lastMessage.soc} %`
-		}
-	]
-	return <>
-		<Map title="Live position" position={lastMessage.gps} />
-		<TextStatistics title="Current statistics" statistics={textStatisticsData} />
-		<LineChart title="Speed over time" data={state} dataKey="speed" />
-		<LineChart title="State of charge over time" data={state} dataKey="soc" />
-	</>
+
+	return (
+		<>
+			<Map
+				title={t('dashboard.live_position')}
+				position={lastMessage.gps}
+			/>
+			<BusStatistics
+				title={t('dashboard.current_statistics')}
+				statistics={toBusStatisticsData(lastMessage)}
+			/>
+
+			<LineChart
+				title={t('dashboard.speed_over_time')}
+				data={state}
+				dataKey="speed"
+			/>
+			<LineChart
+				title={t('dashboard.state_of_charge_over_time')}
+				data={state}
+				dataKey="soc"
+			/>
+		</>
+	);
 }
 
 export default App;
