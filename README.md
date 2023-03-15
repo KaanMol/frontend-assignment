@@ -1,6 +1,6 @@
 # Setup
 
-So I wanted to do way more than I currently have, but I had a vacation planned to Malaga and my girlfriend was already not amused at the fact I took my laptop with me, this is sadly how far I could have come. There are things I would have done differently, but I am happy with the result. At the presentation of this project I will point those things out gladly.
+So I wanted to do way more than I currently have, but I had a vacation planned to Malaga and my girlfriend was already not amused at the fact I took my laptop with me, this is sadly how far I could have come. There are things I would have done differently/I would have fixed, but hopefully it leaves an impression. At the presentation of this project I can clear a lot up.
 
 ## Quick setup with VSCode and Docker
 This project is built with NX and Devcontainers.

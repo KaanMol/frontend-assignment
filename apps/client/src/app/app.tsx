@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { BusStatistics, LineChart, Map } from '@front-end-assignment/ui';
+import { BusStatistics, LineChart, Loading, Map } from '@front-end-assignment/ui';
 import { Page } from '@front-end-assignment/ui';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +18,7 @@ export function App() {
 		const data = lastMessage?.data;
 		if (data === undefined) return;
 
-		let parsedData = JSON.parse(data);
+		const parsedData = JSON.parse(data);
 		parsedData.gps = parsedData.gps.split('|');
 		parsedData.time = new Date(parsedData.time);
 
@@ -27,7 +27,7 @@ export function App() {
 		}
 
 		setState([...state, parsedData]);
-	}, [lastMessage]);
+	}, [lastMessage, state]);
 
 	const locales = Object.keys(languages).map((languageCode) => {
 		const currentLanguage =
@@ -53,7 +53,7 @@ export function App() {
 	return (
 		<Page locale={locale}>
 			{state.at(-1) === undefined || readyState !== ReadyState.OPEN ? (
-				<p>Loading</p>
+				<Loading />
 			) : (
 				<Dashboard state={state} />
 			)}

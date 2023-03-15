@@ -6,7 +6,7 @@ import fs from 'fs';
 
 // Broadcaster is a class that emit event when a new datapoint arrive
 // This is just an emulation of real life situation where datapoint came in randomly
-import { Broadcaster } from "./broadcast";
+import { Broadcaster } from "./Broadcast";
 
 const app = express();
 
