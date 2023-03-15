@@ -1,13 +1,12 @@
 import { LatLngExpression } from 'leaflet';
 import { useEffect } from 'react';
 import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet';
-import Control from 'react-leaflet-custom-control';
-import { Card, Title, Button } from '../atoms';
+import { Card, Title } from '../atoms';
 
 export function Map({
 	title,
 	position,
-	lockMap = false,
+	lockMap = true,
 }: {
 	title: React.ReactNode;
 	lockMap?: boolean;
@@ -26,9 +25,6 @@ export function Map({
 				<CenterMap position={position} lock={lockMap} />
 				<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 				<Marker position={position as LatLngExpression} />
-				<Control prepend position="topright">
-					<Button text="Lock" />
-				</Control>
 			</MapContainer>
 		</Card>
 	);

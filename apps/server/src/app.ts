@@ -1,10 +1,12 @@
 import express from "express";
 import http from "http";
+import path from "path";
 import WebSocket from "ws";
+import fs from 'fs';
 
 // Broadcaster is a class that emit event when a new datapoint arrive
 // This is just an emulation of real life situation where datapoint came in randomly
-import { Broadcaster } from "./Broadcaster";
+import { Broadcaster } from "./broadcast";
 
 const app = express();
 
@@ -13,7 +15,7 @@ const httpServer = http.createServer(app);
 
 // Initating all middleware for express
 app
-	.set("views", `${__dirname}/src/views`)
+	.set("views", fs.createReadStream(path.resolve(`${__dirname}/../../../src/views`)))
 	.set("view engine", "pug");
 
 // Render index.pug from views for root URL

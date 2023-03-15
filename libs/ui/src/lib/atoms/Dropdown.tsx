@@ -2,11 +2,15 @@ import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { Fragment } from 'react';
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(' ');
 }
 
-export function DropdownItem({ item }) {
+export function DropdownItem({
+	item,
+}: {
+	item: { name: string; action: () => void };
+}) {
 	return (
 		<Menu.Item>
 			{({ active }) => (

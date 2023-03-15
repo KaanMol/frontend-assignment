@@ -1,3 +1,42 @@
+# Setup
+
+So I wanted to do way more than I currently have, but I had a vacation planned to Malaga and my girlfriend was already not amused at the fact I took my laptop with me, this is sadly how far I could have come. There are things I would have done differently, but I am happy with the result. At the presentation of this project I will point those things out gladly.
+
+## Quick setup with VSCode and Docker
+This project is built with NX and Devcontainers.
+Microsoft has a great guide on how to setup VSCode with Devcontainers. You can find it here at https://code.visualstudio.com/docs/devcontainers/tutorial.
+AFTER the section "Install the extension", check back for the following instructions.
+
+Once you have VSCode and the Devcontainer extension installed, you can open the project in VSCode and it will automatically ask you to reopen the project in a container. This will take a while the first time, but after that it will be much faster.
+
+After that, you can run the following commands in the terminal to start the project:
+```
+nx run-many --target=serve
+```
+
+## Manual setup
+This project is made with Node v18.2.1. You can use NVM to install this version. You can find the installation guide here:
+
+### Windows
+https://github.com/coreybutler/nvm-windows
+
+### Linux and MacOS
+https://github.com/nvm-sh/nvm
+
+### Install dependencies
+For the dependencies I used yarn, you can follow the installation guide here:
+https://classic.yarnpkg.com/lang/en/docs/install
+
+After that you can run the following command to install the dependencies:
+```
+yarn install
+```
+
+### Start the project
+To start the project you can run the following command:
+```
+nx run-many --target=serve
+```
 
 # ChargePoint Frontend Assignment
 ---

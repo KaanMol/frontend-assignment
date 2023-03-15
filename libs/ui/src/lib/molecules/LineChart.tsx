@@ -1,7 +1,5 @@
 import {
 	CartesianGrid,
-	Label,
-	Legend,
 	Line,
 	LineChart as RechartsLineChart,
 	ResponsiveContainer,
@@ -11,7 +9,15 @@ import {
 } from 'recharts';
 import { Card, Title } from '../atoms';
 
-export function LineChart({ title, data, dataKey }) {
+export function LineChart({
+	title,
+	data,
+	dataKey,
+}: {
+	title: React.ReactNode;
+	data: any[];
+	dataKey: string;
+}) {
 	return (
 		<Card>
 			<Title>{title}</Title>
