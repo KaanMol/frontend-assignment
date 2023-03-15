@@ -1,4 +1,14 @@
-import { CartesianGrid, Label, Legend, Line, LineChart as RechartsLineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import {
+	CartesianGrid,
+	Label,
+	Legend,
+	Line,
+	LineChart as RechartsLineChart,
+	ResponsiveContainer,
+	Tooltip,
+	XAxis,
+	YAxis,
+} from 'recharts';
 import { Card, Title } from '../atoms';
 
 export function LineChart({ title, data, dataKey }) {
@@ -9,7 +19,7 @@ export function LineChart({ title, data, dataKey }) {
 				<RechartsLineChart data={data}>
 					<CartesianGrid vertical={false} />
 					<XAxis dataKey="time" hide={true} />
-					<YAxis width={20} />
+					<YAxis width={25} />
 					<Tooltip />
 					<Line type="monotone" dataKey={dataKey} stroke="#ef7622" />
 				</RechartsLineChart>

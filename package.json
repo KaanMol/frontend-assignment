@@ -2,7 +2,6 @@
   "name": "front-end-assignment",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.7.13",
