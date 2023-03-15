@@ -1,0 +1,17 @@
+{
+	"translation": {
+		"dashboard": {
+			"live_position": "Live positie",
+			"current_statistics": "Huidige statistieken",
+			"speed_over_time": "Snelheid over tijd",
+			"state_of_charge_over_time": "Batterij status over tijd"
+		},
+		"general": {
+			"time": "Tijd",
+			"odometer": "Kilometerteller",
+			"energy": "Energie",
+			"speed": "Snelheid",
+			"charge": "Batterij status"
+		}
+	}
+}

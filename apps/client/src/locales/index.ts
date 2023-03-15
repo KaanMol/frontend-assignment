@@ -4,6 +4,15 @@ import i18n from "i18next";
 import en from './en.json';
 import nl from './nl.json';
 
+export const languages = {
+	en: {
+		name: 'English',
+	},
+	nl: {
+		name: 'Nederlands',
+	}
+};
+
 i18n
 	.use(LanguageDetector)
 	.use(initReactI18next)

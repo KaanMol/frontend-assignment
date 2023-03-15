@@ -1,0 +1,17 @@
+{
+	"translation": {
+		"dashboard": {
+			"live_position": "Live position",
+			"current_statistics": "Current statistics",
+			"speed_over_time": "Speed over time",
+			"state_of_charge_over_time": "State of charge over time"
+		},
+		"general": {
+			"time": "Time",
+			"odometer": "Odometer",
+			"energy": "Energy",
+			"speed": "Speed",
+			"state_of_charge": "Battery status"
+		}
+	}
+}
