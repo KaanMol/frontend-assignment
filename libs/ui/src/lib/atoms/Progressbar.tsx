@@ -5,7 +5,6 @@ export function Progressbar({
 	percentage: number;
 	suffix?: string;
 }) {
-	console.log(suffix);
 	return (
 		<>
 			<p className="dark:text-white font-bold">
