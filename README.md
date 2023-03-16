@@ -1,6 +1,5 @@
 # Setup
-
-So I wanted to do way more than I currently have, but I had a vacation planned to Malaga and my girlfriend was already not amused at the fact I took my laptop with me, this is sadly how far I could have come. There are things I would have done differently/I would have fixed, but hopefully it leaves an impression. At the presentation of this project I can clear a lot up.
+So I wanted to do way more than I currently have, but I had a vacation planned to Malaga and my girlfriend was already not amused at the fact I took my laptop with me, this is sadly how far I could make it. There are things I would have done differently/I would have fixed, like cleaning the incoming data in the back-end by keeping a history of a few previous elements and calculate the difference to detect jumps in GPS data and check the validity of the other fields. But hopefully it gives an idea of what I can do/would do. At the presentation of this project I am happy to point more things out I would have done if I had more time (and a not annoyed girlfriend).
 
 ## Quick setup with VSCode and Docker
 This project is built with NX and Devcontainers.
@@ -17,11 +16,19 @@ nx run-many --target=serve
 ## Manual setup
 This project is made with Node v18.2.1. You can use NVM to install this version. You can find the installation guide here:
 
-### Windows
+Windows
 https://github.com/coreybutler/nvm-windows
 
-### Linux and MacOS
+Linux and MacOS
 https://github.com/nvm-sh/nvm
+
+
+### Install NX (Optional)
+To run this project, the NX CLI is used. This is not required however, since the same can be accomplished through npx.
+But to install the NX CLI run the following command in the terminal:
+```
+yarn global add nx
+```
 
 ### Install dependencies
 For the dependencies I used yarn, you can follow the installation guide here:
@@ -33,10 +40,18 @@ yarn install
 ```
 
 ### Start the project
-To start the project you can run the following command:
+
+
+To start the project you can run the following command, if you have NX CLI installed:
 ```
 nx run-many --target=serve
 ```
+
+If that is not the case, run:
+```
+npx nx run-many --target=serve
+```
+
 
 # ChargePoint Frontend Assignment
 ---
