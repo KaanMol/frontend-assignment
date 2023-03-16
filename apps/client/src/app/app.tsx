@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 import { BusStatistics, LineChart, Loading, Map } from '@front-end-assignment/ui';
 import { Page } from '@front-end-assignment/ui';
 import { useEffect, useState } from 'react';
@@ -9,7 +9,7 @@ import { languages } from '../locales';
 import { BusData } from '../types/busData';
 
 export function App() {
-	const { t, i18n } = useTranslation();
+	const { i18n } = useTranslation();
 
 	const [state, setState] = useState([] as BusData[]);
 	const { lastMessage, readyState } = useWebSocket('ws://localhost:3000');
@@ -46,7 +46,7 @@ export function App() {
 	});
 
 	const [locale, setLocale] = useState({
-		currentLocale: languages[i18n.language as keyof typeof languages].name,
+		currentLocale: languages[i18n.language as keyof typeof languages]?.name ?? languages.en.name,
 		locales,
 	});
 
