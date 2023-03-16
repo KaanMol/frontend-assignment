@@ -60,7 +60,7 @@ function CenterMap({
 		map.scrollWheelZoom.enable();
 		map.boxZoom.enable();
 		map.keyboard.enable();
-	}, [position, lock]);
+	}, [position, lock, map]);
 
 	return null;
 }
